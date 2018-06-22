@@ -1,0 +1,13 @@
+package AutoTestingAssessment.Test;
+
+import org.openqa.selenium.WebDriver;
+
+public class SaveSystemUser {
+	WebDriver driver;
+	
+	public SaveSystemUser(WebDriver driver){
+		this.driver = driver;
+	}
+	
+	
+}

@@ -1,0 +1,39 @@
+package AutoTestingAssessment.Test;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class DashBoard {
+	WebDriver driver;
+	
+	@FindBy(id="txtUsername")
+	WebElement userNameInput;
+	
+	@FindBy(id="txtPassword")
+	WebElement userPassWordInput;
+	
+	@FindBy(id="btnLogin")
+	WebElement loginBtn;
+	
+	public void loadDashBoard() {
+		
+	}
+	
+	public void logIn(String user, String password){
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		Actions builder = new Actions(driver);
+		
+		driver.get(Constant.DASHBOARD);
+		wait.until(ExpectedConditions.visibilityOf(userNameInput));
+			
+		builder.moveToElement(userNameInput).click().sendKeys(user).perform();
+		builder.moveToElement(userPassWordInput).click().sendKeys(password).perform();
+		builder.moveToElement(loginBtn).click().perform();
+		
+	}
+	
+}

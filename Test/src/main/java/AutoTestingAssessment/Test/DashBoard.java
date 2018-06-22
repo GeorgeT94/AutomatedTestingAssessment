@@ -1,0 +1,61 @@
+package AutoTestingAssessment.Test;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class DashBoard {
+	WebDriver driver;
+	//Log in elements
+	@FindBy(id="txtUsername")
+	WebElement userNameInput;
+	
+	@FindBy(id="txtPassword")
+	WebElement userPassWordInput;
+	
+	@FindBy(id="btnLogin")
+	WebElement loginBtn;
+	
+	//Dashboard elements
+	@FindBy(id="menu_pim_viewPimModule")
+	WebElement PIMbtn;
+	
+	@FindBy(id="menu_pim_addEmployee")
+	WebElement addEmployeeBtn;
+	
+	public DashBoard(WebDriver driver){
+		this.driver = driver;
+	}
+	
+	public void logIn(String user, String password){
+		if(driver.getCurrentUrl().equals(Constant.DASHBOARD)) return;
+		
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		Actions builder = new Actions(driver);
+		
+		driver.get(Constant.DASHBOARD);
+		wait.until(ExpectedConditions.visibilityOf(userNameInput));
+			
+		userNameInput.sendKeys(user);
+		userPassWordInput.sendKeys(password);
+		builder.moveToElement(loginBtn).click().perform();
+		
+	}
+	
+	public void addUserPage() {
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		Actions builder = new Actions(driver);
+		
+		wait.until(ExpectedConditions.visibilityOf(PIMbtn));
+		builder.moveToElement(PIMbtn).click().perform();
+		
+		wait.until(ExpectedConditions.visibilityOf(addEmployeeBtn));
+		builder.moveToElement(addEmployeeBtn).click().perform();
+		
+	}
+	
+	
+}

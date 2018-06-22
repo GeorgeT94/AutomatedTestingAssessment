@@ -1,0 +1,63 @@
+package AutoTestingAssessment.Test;
+
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class AddEmployee {
+	WebDriver driver;
+	
+	@FindBy(id="firstName")
+	WebElement firstNameInput ;
+	
+	@FindBy(id="middleName")
+	WebElement middleNameInput;
+	
+	@FindBy(id="lastName")
+	WebElement lastNameInput;
+	
+	@FindBy(id="employeeId")
+	WebElement employeeIdInput;
+	
+	@FindBy(id="photofile")
+	WebElement photoInput;
+	
+	@FindBy(id="user_name")
+	WebElement userNameInput;
+	
+	@FindBy(id="user_password")
+	WebElement userPasswordInput;
+	
+	@FindBy(id="re_password")
+	WebElement reUserPasswordInput ;
+	
+	@FindBy(id="btnSave")
+	WebElement saveBtn;
+	
+	
+	public AddEmployee(WebDriver driver){
+		this.driver = driver;
+	}
+	
+	public void addDetails() {
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		Actions builder = new Actions(driver);
+
+		wait.until(ExpectedConditions.visibilityOf(firstNameInput));
+		//fill in details
+		builder.moveToElement(firstNameInput).click().sendKeys(Constant.FIRST_NAME).perform();
+		builder.moveToElement(middleNameInput).click().sendKeys(Constant.MIDDLE_NAME).perform();
+		builder.moveToElement(lastNameInput).click().sendKeys(Constant.LAST_NAME).perform();
+		builder.moveToElement(employeeIdInput).click().sendKeys(Constant.EMPLOYEE_ID).perform();
+		
+		//builder.moveToElement(photoInput).click().sendKeys(Constant.IMAGE_PATH).sendKeys(Keys.RETURN).perform();
+		builder.moveToElement(userPasswordInput).click().sendKeys(Constant.NEW_USER_PASSWORD).perform();
+		builder.moveToElement(reUserPasswordInput).click().sendKeys(Constant.NEW_USER_PASSWORD).perform();
+		//submit form
+		builder.moveToElement(saveBtn).click().perform();
+	}
+}

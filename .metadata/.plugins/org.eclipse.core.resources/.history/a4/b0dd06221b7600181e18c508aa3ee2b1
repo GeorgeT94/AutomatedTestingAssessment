@@ -1,0 +1,7 @@
+package AutoTestingAssessment.Test;
+
+public class Constant {
+	public static final String DASHBOARD = "http://opensource.demo.orangehrmlive.com/index.php/dashboard";
+	public static final String ADMIN_USER = "Admin";
+	public static final String ADMIN_PASSWORD ="admin";
+}

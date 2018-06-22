@@ -1,0 +1,13 @@
+package AutoTestingAssessment.Test;
+
+import org.openqa.selenium.WebDriver;
+
+public class AddEmployee {
+	WebDriver driver;
+	
+	public AddEmployee(WebDriver driver){
+		this.driver = driver;
+	}
+	
+	
+}
